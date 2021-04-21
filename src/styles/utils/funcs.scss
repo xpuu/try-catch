@@ -1,0 +1,61 @@
+// First letter
+@function fl($str) {
+  @return str-slice($str, 0, 1);
+}
+
+// Type letter
+@function tl($type) {
+  @return if($type == 'all', '', fl($type));
+}
+
+// Type text
+@function tt($type) {
+  @return if($type == 'all', '', '-' + $type);
+}
+
+// List to pixels
+@function px($items) {
+  $results: ();
+  @each $val in $items {
+    $results: append($results, if(type-of($val) == number, $val + 0px, $val));
+  }
+  @return $results;
+}
+
+// Add suffix to list
+@function suffix($items, $suffix) {
+  $results: ();
+  @each $val in $items {
+    $results: append($results, $val + $suffix);
+  }
+  @return $results;
+}
+
+// Generate names list
+@function names($prefix, $items, $suffix: '') {
+  $results: ();
+  @each $val in $items {
+    $results: append($results, $prefix + if($val == '', '', '-' + $val) + $suffix);
+  }
+  @return $results;
+}
+
+// Generate rules
+@mixin rules($class, $prop, $values) {
+  // @debug $class;
+  // @debug $prop;
+  // @debug $values;
+  @if length($values) > 0 {
+    @for $i from 1 through length($values) {
+      .#{nth($class, $i)} {
+        @if type-of($prop) == 'list' {
+          @each $item in $prop {
+            #{$item}: #{nth($values, $i)};
+          }
+        } @else {
+          #{$prop}: #{nth($values, $i)};
+        }
+      }
+    }
+  }
+}

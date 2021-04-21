@@ -1,0 +1,26 @@
+:root {
+  --white: #fff;
+}
+
+@import 'fonts.scss', 'utils.scss';
+
+html,
+body,
+#sapper {
+  width: 800px;
+  height: 480x;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  font-family: Roboto;
+  padding: 0;
+  margin: 0;
+  user-select: none;
+  overflow: hidden;
+  background-color: var(--white);
+}
+

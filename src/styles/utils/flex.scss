@@ -1,0 +1,57 @@
+@import 'funcs.scss';
+
+// Flex direction
+$items: (
+  // row: row,
+  col: column
+);
+@include rules(names('flex', map-keys($items)), flex-direction, map-values($items));
+
+// Flex wrap
+$items: (wrap);
+@include rules(names('flex', $items), 'flex-wrap', $items);
+
+// Flex grow
+$items: (
+  // 0: 0,
+  '': 1
+);
+@include rules(names('flex-grow', map-keys($items)), flex-grow, map-values($items));
+
+// Flex shrink
+$items: (
+  0: 0,
+  '': 1
+);
+@include rules(names('flex-shrink', map-keys($items)), flex-shrink, map-values($items));
+
+// Justify content
+$items: (
+  // start: flex-start,
+  end: flex-end,
+  center: center,
+  // between: space-between,
+  // around: space-around,
+  // evenly: space-evenly,,
+);
+@include rules(names('justify', map-keys($items)), justify-content, map-values($items));
+
+// Align items
+$items: (
+  start: flex-start,
+  // end: flex-end,
+  center: center,
+  // baseline: baseline,
+  stretch: stretch
+);
+@include rules(names('items', map-keys($items)), align-items, map-values($items));
+
+// Align self
+$items: (
+  start: flex-start,
+  end: flex-end,
+  // center: center,
+  // stretch: stretch,
+  // baseline: baseline,,
+);
+@include rules(names('self', map-keys($items)), align-self, map-values($items));

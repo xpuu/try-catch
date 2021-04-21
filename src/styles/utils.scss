@@ -1,0 +1,57 @@
+@import 'utils/normalize.scss';
+@import 'utils/funcs.scss';
+@import 'utils/flex.scss';
+@import 'utils/text.scss';
+@import 'utils/spacing.scss';
+
+// Display
+$items: (
+  block: block,
+  flex: flex,
+  grid: grid,
+  hidden: none,
+);
+@include rules(map-keys($items), display, map-values($items));
+
+// Position
+$items: (static, fixed, absolute, relative, sticky);
+@include rules($items, position, $items);
+
+$items: (top, right, bottom, left);
+@each $prop in $items {
+  .#{$prop}-0 {
+    #{$prop}: 0;
+  }
+}
+
+// Center horizontally
+.center-y {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+// Width in percents
+$items: (50, 100);
+@include rules(names('w', $items, 'p'), width, suffix($items, '%'));
+
+// Width in pixels
+$items: ();
+@include rules(names('w', $items), width, px($items));
+
+// Height in percents
+$items: ();
+@include rules(names('h', $items, 'p'), height, suffix($items, '%'));
+
+// Height in pixels
+$items: (275);
+@include rules(names('h', $items), height, px($items));
+
+// Floats
+$items: (right, left, none);
+@include rules(names('float', $items), float, $items);
+
+.clearfix:after {
+  content: '';
+  display: table;
+  clear: both;
+}

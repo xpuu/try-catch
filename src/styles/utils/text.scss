@@ -1,0 +1,13 @@
+@import 'funcs.scss';
+
+// Font size
+$items: (16, 18, 24);
+@include rules(names('fs', $items), font-size, px($items));
+
+// Font weight
+$items: (500);
+@include rules(names('fw', $items), font-weight, $items);
+
+// Text align
+$items: (center, right);
+@include rules(names('text', $items), text-align, $items);

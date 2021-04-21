@@ -1,0 +1,84 @@
+@import 'funcs.scss';
+
+// Margin
+$items: (
+  all: (
+    auto,
+  ),
+  top: (),
+  right: (),
+  bottom: (),
+  left: (
+    auto,
+  ),
+);
+@each $type, $set in $items {
+  @if length($set) > 0 {
+    @include rules(names('m' + tl($type), $set), margin + tt($type), px($set));
+  }
+}
+
+// Margin XY
+$items: (
+  x: (
+    auto,
+  ),
+  y: (),
+);
+@each $type, $set in $items {
+  @if length($set) > 0 {
+    @include rules(
+      names('m' + $type, $set),
+      if($type == 'x', (margin-left, margin-right), (margin-top, margin-bottom)),
+      px($set)
+    );
+  }
+}
+
+// Space XY
+$items: (
+  x: (),
+  y: (),
+);
+@each $type, $set in $items {
+  @if length($set) > 0 {
+    @include rules(
+      names('space-' + $type, $set, '> * + *'),
+      if($type == 'x', margin-left, margin-top),
+      px($set)
+    );
+  }
+}
+
+// Padding
+$items: (
+  all: (),
+  top: (),
+  right: (
+    0 !important,
+  ),
+  bottom: (
+    0 !important,
+  ),
+  left: (),
+);
+@each $type, $set in $items {
+  @if length($set) > 0 {
+    @include rules(names('p' + tl($type), $set), padding + tt($type), px($set));
+  }
+}
+
+// Padding XY
+$items: (
+  x: (),
+  y: (),
+);
+@each $type, $set in $items {
+  @if length($set) > 0 {
+    @include rules(
+      names('p' + $type, $set),
+      if($type == 'x', (padding-left, padding-right), (padding-top, padding-bottom)),
+      px($set)
+    );
+  }
+}
