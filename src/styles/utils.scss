@@ -39,11 +39,11 @@ $items: ();
 @include rules(names('w', $items), width, px($items));
 
 // Height in percents
-$items: ();
+$items: (100);
 @include rules(names('h', $items, 'p'), height, suffix($items, '%'));
 
 // Height in pixels
-$items: (275);
+$items: ();
 @include rules(names('h', $items), height, px($items));
 
 // Floats
